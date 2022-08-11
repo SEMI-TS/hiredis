@@ -52,6 +52,19 @@ void hiredisResetAllocators(void);
 
 #ifndef _WIN32
 
+#ifndef SIZE_MAX
+/* Limit of `size_t' type.  */
+# if __WORDSIZE == 64
+#  define SIZE_MAX		(18446744073709551615UL)
+# else
+#  if __WORDSIZE32_SIZE_ULONG
+#   define SIZE_MAX		(4294967295UL)
+#  else
+#   define SIZE_MAX		(4294967295U)
+#  endif
+# endif
+#endif
+
 /* Hiredis' configured allocator function pointer struct */
 extern hiredisAllocFuncs hiredisAllocFns;
 

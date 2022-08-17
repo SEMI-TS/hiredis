@@ -171,6 +171,7 @@ $(DYLIBNAME): $(OBJ)
 
 $(STLIBNAME): $(OBJ)
 	$(STLIB_MAKE_CMD) $(STLIBNAME) $(OBJ)
+	cp $(STLIBNAME) $(LIBPATH)
 
 #################### SSL building rules start ####################
 $(SSL_DYLIBNAME): $(SSL_OBJ)
